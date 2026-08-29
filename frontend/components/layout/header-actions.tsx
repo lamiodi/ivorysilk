@@ -4,22 +4,13 @@ import { Heart, MagnifyingGlass, ShoppingBag } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useState } from "react";
 import { SearchDialog } from "@/features/search/components/search-dialog";
-import { products } from "@/features/products/data/products";
 import {
-  bag,
   useBagItems,
   useStoredCollection,
   wishlist,
 } from "@/lib/commerce-store";
 import { cn } from "@/lib/utils";
 import { BagDrawer } from "./bag-drawer";
-
-const formatUsd = (value: number) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
 
 const iconButtonClass =
   "group relative flex h-10 items-center justify-center gap-2 px-2 text-ink transition-colors hover:text-gold focus-visible:outline-2 focus-visible:outline-ring cursor-pointer sm:px-2.5";

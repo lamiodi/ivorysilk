@@ -247,7 +247,7 @@ export function BagDrawer({
 
                       <button
                         type="button"
-                        onClick={() => quickAddSuggestion(p.id, p.name)}
+                        onClick={() => quickAddSuggestion(p.id)}
                         className="inline-flex items-center gap-1 shrink-0 text-[10px] uppercase font-semibold tracking-wider text-ink hover:text-gold transition-colors ml-2 px-2 py-1 border border-line bg-white whitespace-nowrap"
                       >
                         <PlusCircle size={13} weight="bold" />

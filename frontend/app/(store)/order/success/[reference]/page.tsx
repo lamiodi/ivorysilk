@@ -7,7 +7,6 @@ import {
   EnvelopeSimple,
   Printer,
   ShieldCheck,
-  ShoppingBag,
   Truck,
 } from "@phosphor-icons/react";
 import Image from "next/image";
