@@ -34,12 +34,12 @@ export function SiteHeader() {
             <HeaderSearchButton className="hidden min-w-[200px] md:flex lg:min-w-[240px]" />
           </div>
 
-          {/* Center Column: Monogram + Grand Haute Couture Wordmark */}
+          {/* Center Column: Monogram + Handwritten Atelier Wordmark */}
           <div className="flex shrink-0 items-center justify-center gap-2 text-center sm:gap-3">
             <Link
               href="/"
-              aria-label="Ivory Silk — Collective Atelier — home"
-              className="group flex items-center justify-center gap-2 text-center outline-none transition-transform duration-300 hover:scale-[1.01] sm:gap-3"
+              aria-label="Atelier — home"
+              className="group flex items-center justify-center gap-2 text-center outline-none transition-transform duration-300 hover:scale-[1.01] sm:gap-2.5"
             >
               <Image
                 src="/logo.png"
@@ -49,13 +49,11 @@ export function SiteHeader() {
                 priority
                 className="h-7 w-7 shrink-0 transition-opacity duration-300 group-hover:opacity-80 sm:h-9 sm:w-9 lg:h-11 lg:w-11"
               />
-              <span className="flex flex-col items-start justify-center text-left">
-                <span className="font-display text-sm font-light tracking-[0.18em] uppercase text-ink transition-colors group-hover:text-gold sm:text-2xl sm:tracking-[0.32em] lg:text-3xl lg:tracking-[0.38em]">
-                  Ivory Silk
-                </span>
-                <span className="-mt-0.5 text-[8px] font-semibold uppercase tracking-[0.2em] text-gold sm:text-[9px] sm:tracking-[0.32em] lg:text-[10px] lg:tracking-[0.36em]">
-                  Collective Atelier
-                </span>
+              <span
+                className="font-script text-base italic leading-none text-ink transition-colors group-hover:text-gold sm:text-lg lg:text-xl"
+                style={{ fontFamily: "var(--font-script, 'Caveat', 'Dancing Script', cursive)" }}
+              >
+                atelier
               </span>
             </Link>
           </div>

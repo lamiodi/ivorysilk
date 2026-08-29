@@ -84,17 +84,18 @@ export function HomePreloader() {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, letterSpacing: "0.42em" }}
-              animate={{ opacity: 1, letterSpacing: "0.22em" }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
               transition={
                 reduce
                   ? { duration: 0 }
                   : { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
               }
-              className="font-display text-[11px] font-medium uppercase text-ink"
+              className="text-2xl italic leading-none text-ink sm:text-3xl"
+              style={{ fontFamily: "var(--font-script, 'Caveat', 'Dancing Script', cursive)" }}
             >
-              Ivory&nbsp;Silk&nbsp;Atelier
+              atelier
             </motion.p>
 
             <div className="flex items-center gap-1.5" aria-hidden>
