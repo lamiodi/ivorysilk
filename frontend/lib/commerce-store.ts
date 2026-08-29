@@ -240,19 +240,21 @@ export const wishlist = createWishlistStore("isc:wishlist");
 export const bag = createBagStore("isc:bag");
 
 export function useStoredCollection(store: SimpleStore | BagStore): string[] {
-  return useSyncExternalStore(
-    store.subscribe,
-    store.getSnapshot,
-    store.getServerSnapshot,
-  );
+  const subscribe = store.subscribe;
+  const getSnapshot = store.getSnapshot;
+  const getServerSnapshot = store.getServerSnapshot;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
 const EMPTY_BAG: readonly CartItem[] = Object.freeze([]) as readonly CartItem[];
 
 export function useBagItems(): readonly CartItem[] {
-  return useSyncExternalStore(
-    bag.subscribe,
-    bag.getItemsSnapshot,
-    () => EMPTY_BAG,
-  );
+  // Snapshot to local consts so React's `useSyncExternalStore` always
+  // receives defined functions. This protects against edge cases where
+  // the module-level `bag` could be undefined under bundler tree-shaking
+  // or duplicate evaluation.
+  const subscribe = bag.subscribe;
+  const getSnapshot = bag.getItemsSnapshot;
+  const getServerSnapshot = bag.getServerItemsSnapshot;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
