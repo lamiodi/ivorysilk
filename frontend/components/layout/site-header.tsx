@@ -42,7 +42,7 @@ export function SiteHeader() {
               className="group flex items-center justify-center gap-2 text-center outline-none transition-transform duration-300 hover:scale-[1.01] sm:gap-3"
             >
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt=""
                 width={48}
                 height={48}

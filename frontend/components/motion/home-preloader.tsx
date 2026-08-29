@@ -74,7 +74,7 @@ export function HomePreloader() {
               className="relative h-20 w-20 sm:h-24 sm:w-24"
             >
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Ivory Silk Collective"
                 fill
                 priority

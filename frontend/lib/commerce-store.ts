@@ -180,6 +180,14 @@ function createBagStore(key: string): BagStore {
       return cachedIds;
     },
     getServerSnapshot: () => SERVER_STRINGS,
+    getItemsSnapshot() {
+      // Returns the same array reference until something is written.
+      // Important: read() may hydrate on first call, but the items array
+      // is only replaced via write() (which calls listeners). So between
+      // writes, the reference is stable.
+      return read();
+    },
+    getServerItemsSnapshot: () => SERVER_ITEMS,
     getItems() {
       return read();
     },
@@ -197,7 +205,8 @@ function createBagStore(key: string): BagStore {
       }
     },
     add(id) {
-      this.addItem(id, "S", undefined, 1);
+      read().push({ id, size: "S", quantity: 1 });
+      write(read());
     },
     remove(id, size) {
       const current = read();
@@ -236,10 +245,12 @@ export function useStoredCollection(store: SimpleStore | BagStore): string[] {
   );
 }
 
-export function useBagItems(): CartItem[] {
+const EMPTY_BAG: readonly CartItem[] = Object.freeze([]) as readonly CartItem[];
+
+export function useBagItems(): readonly CartItem[] {
   return useSyncExternalStore(
     bag.subscribe,
-    bag.getItems,
-    () => SERVER_ITEMS,
+    bag.getItemsSnapshot,
+    () => EMPTY_BAG,
   );
 }

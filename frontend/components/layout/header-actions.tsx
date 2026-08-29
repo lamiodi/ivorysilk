@@ -1,14 +1,9 @@
 "use client";
 
-import { Heart, MagnifyingGlass, ShoppingBag } from "@phosphor-icons/react";
-import Link from "next/link";
+import { MagnifyingGlass, ShoppingBag } from "@phosphor-icons/react";
 import { useState } from "react";
 import { SearchDialog } from "@/features/search/components/search-dialog";
-import {
-  useBagItems,
-  useStoredCollection,
-  wishlist,
-} from "@/lib/commerce-store";
+import { useBagItems } from "@/lib/commerce-store";
 import { cn } from "@/lib/utils";
 import { BagDrawer } from "./bag-drawer";
 
@@ -61,7 +56,6 @@ export function HeaderSearchButton({ className }: { className?: string }) {
 export function HeaderActions() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
-  const wishlistIds = useStoredCollection(wishlist);
   const bagItems = useBagItems();
 
   const totalQuantity = bagItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -82,30 +76,6 @@ export function HeaderActions() {
           className="transition-transform duration-300 group-hover:scale-110"
         />
       </button>
-
-      {/* Wishlist Action */}
-      <Link
-        href="/wishlist"
-        aria-label={`Wishlist, ${wishlistIds.length} saved`}
-        className={cn(iconButtonClass)}
-      >
-        <div className="relative">
-          <Heart
-            size={20}
-            weight="light"
-            aria-hidden
-            className="transition-transform duration-300 group-hover:scale-110"
-          />
-          {wishlistIds.length > 0 && (
-            <span className="absolute -top-1.5 -right-2">
-              <CountChip count={wishlistIds.length} />
-            </span>
-          )}
-        </div>
-        <span className="hidden text-[11px] font-medium uppercase tracking-[0.16em] text-smoke group-hover:text-ink lg:inline-block">
-          Saved {wishlistIds.length > 0 && `(${wishlistIds.length})`}
-        </span>
-      </Link>
 
       {/* Shopping Bag Action */}
       <button
