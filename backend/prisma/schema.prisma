@@ -1,0 +1,105 @@
+// Ivory Silk Atelier Production Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Collection {
+  id          String    @id @default(uuid())
+  slug        String    @unique
+  name        String
+  tagline     String
+  description String
+  image       String
+  featured    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Product {
+  id               String         @id @default(uuid())
+  slug             String         @unique
+  name             String
+  creator          String         @default("Atelier Ivory Silk")
+  category         String
+  collectionId     String?
+  collection       Collection?    @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+  collectionName   String?
+  fabric           String
+  sizes            String         // Comma-separated sizes e.g. "XS,S,M,L,XL"
+  price            Float
+  compareAtPrice   Float?
+  rating           Float          @default(5.0)
+  reviewCount      Int            @default(0)
+  isBestseller     Boolean        @default(false)
+  isNew            Boolean        @default(false)
+  featured         Boolean        @default(false)
+  shortDescription String
+  description      String
+  features         String         // JSON string array
+  includes         String?        // JSON string array
+  care             String?        // JSON string array
+  fit              String?
+  modelInfo        String?
+  image            String
+  hoverImage       String
+  gallery          String         // JSON string array
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  colors           ProductColor[]
+  orderItems       OrderItem[]
+}
+
+model ProductColor {
+  id        String  @id @default(uuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name      String
+  hex       String
+}
+
+model Order {
+  id                String      @id @default(uuid())
+  orderNumber       String      @unique
+  customerEmail     String
+  customerFirstName String
+  customerLastName  String
+  customerPhone     String?
+  customerCountry   String
+  subtotal          Float
+  shippingFee       Float
+  total             Float
+  currency          String      @default("USD")
+  status            String      @default("PENDING") // PENDING, PAID, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+  paymentStatus     String      @default("UNPAID")  // UNPAID, PAID, FAILED, REFUNDED
+  paymentProvider   String      @default("PAYSTACK")
+  paymentReference  String?     @unique
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  items             OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  size      String
+  color     String?
+  quantity  Int      @default(1)
+  price     Float
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}

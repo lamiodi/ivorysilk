@@ -1,0 +1,16 @@
+{
+  "name": "ivory-silk-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev:frontend",
+    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:backend": "npm --prefix backend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

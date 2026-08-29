@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Ivory Silk — Collective Atelier">
+  <!-- Outer hairline frame: thin gold foil square -->
+  <rect x="6" y="6" width="52" height="52" stroke="#b68c45" stroke-width="0.6" fill="none"/>
+  <!-- Inner hairline frame -->
+  <rect x="9" y="9" width="46" height="46" stroke="#b68c45" stroke-width="0.35" fill="none" opacity="0.55"/>
+
+  <!-- Intertwined "I" + "S" monogram, hairline gold strokes -->
+  <g stroke="#b68c45" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Letter I: vertical stem with thin serifs -->
+    <line x1="22" y1="18" x2="22" y2="46"/>
+    <line x1="17.5" y1="18" x2="26.5" y2="18"/>
+    <line x1="17.5" y1="46" x2="26.5" y2="46"/>
+
+    <!-- Letter S: elegant high-fashion curve, intertwined through the I -->
+    <path d="M44 22
+             C 41 18, 35 18, 33 22
+             C 31 26, 36 28, 40 30
+             C 45 32.5, 48 35, 45.5 40
+             C 43 44.5, 36 45, 33 41"/>
+  </g>
+
+  <!-- Tiny diamond at the base: couture accent -->
+  <g fill="#b68c45">
+    <path d="M32 50.5 L33.2 52.3 L32 54.1 L30.8 52.3 Z"/>
+  </g>
+</svg>

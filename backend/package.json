@@ -1,0 +1,28 @@
+{
+  "name": "ivory-silk-backend",
+  "version": "1.0.0",
+  "description": "Direct Supabase REST API & Database Service for Ivory Silk Collective Luxury E-Commerce",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "npx tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "db:seed": "npx tsx src/scripts/seed-supabase.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^20.17.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
