@@ -32,6 +32,8 @@ export type BagStore = {
   subscribe: (listener: () => void) => () => void;
   getSnapshot: () => string[];
   getServerSnapshot: () => string[];
+  getItemsSnapshot: () => readonly CartItem[];
+  getServerItemsSnapshot: () => readonly CartItem[];
   getItems: () => CartItem[];
   addItem: (id: string, size?: string, color?: string, quantity?: number) => void;
   add: (id: string) => void;
